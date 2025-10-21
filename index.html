@@ -2,21 +2,49 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Mini Clicker</title>
+  <title>Klikacz 2.0</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Mini Clicker </h1>
-  <div class="panel">
-    <p id="points">Wynik: 0</p>
-    <p id="countdown">Pozostały czas: 10</p>
+  <div class="game-container">
+    <header>
+      <h1>Klikacz 2.0 </h1>
+    </header>
+
+    <section class="status-panel">
+      <div class="status-box">
+        <span id="punkty">0</span>
+        <p>Punkty</p>
+      </div>
+      <div class="status-box">
+        <span id="czas">10</span>
+        <p>Czas</p>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button id="plus">Dodaj punkt</button>
+      <button id="minus">Odejmij punkt</button>
+      <button id="kup">Auto-kliker (20 pkt)</button>
+    </section>
+
+    <section class="nick-area">
+      <h2>Twój nick</h2>
+      <input type="text" id="nick" placeholder="np. PlayerOne">
+      <div id="podglad"></div>
+      <button id="zapisz"> Zapisz wynik</button>
+    </section>
+
+    <section class="ranking">
+      <h2>Ranking graczy</h2>
+      <table id="tabela">
+        <tr>
+          <th>Nick</th>
+          <th>Wynik</th>
+        </tr>
+      </table>
+    </section>
   </div>
-  <div class="buttons">
-    <button id="addBtn">Dodaj punkt</button>
-    <button id="subBtn">Odejmij punkt</button>
-  </div>
-  <p id="info"></p>
-  <button id="shopBtn">Kup auto-kliker (20 pkt)</button>
 
   <script src="script.js"></script>
 </body>
