@@ -1,61 +1,57 @@
-let points = 0;
-let timeLeft = 10;
-let timerId;
-let autoMode = false;
+let punkty = 0
+let czas = 10
+let auto = false
 
-const pointsEl = document.getElementById("points");
-const timeEl = document.getElementById("countdown");
-const infoEl = document.getElementById("info");
+let p = document.getElementById("punkty")
+let c = document.getElementById("czas")
+let plus = document.getElementById("plus")
+let minus = document.getElementById("minus")
+let kup = document.getElementById("kup")
+let nick = document.getElementById("nick")
+let podglad = document.getElementById("podglad")
+let zapisz = document.getElementById("zapisz")
+let tabela = document.getElementById("tabela")
 
-const addBtn = document.getElementById("addBtn");
-const subBtn = document.getElementById("subBtn");
-const shopBtn = document.getElementById("shopBtn");
-
-function refresh() {
-  pointsEl.textContent = "Wynik: " + points;
-
-  if (points === 10) {
-    infoEl.textContent = "Masz już 10 punktów, świetnie idzie! 🎉";
-  }
-  if (points === 30) {
-    infoEl.textContent = "30 punktów! Coraz lepiej 💪";
-  }
-  if (points === 50) {
-    infoEl.textContent = "50 punktów! Jesteś pro klikerem 🏆";
-  }
+plus.onclick = function(){
+    punkty = punkty + 1
+    p.innerHTML = punkty
+    podglad.innerHTML = "Gracz: " + nick.value + " | Wynik: " + punkty
 }
 
-function addPoints(value) {
-  points += value;
-  
-  addBtn.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-  subBtn.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-  refresh();
+minus.onclick = function(){
+    punkty = punkty - 1
+    p.innerHTML = punkty
+    podglad.innerHTML = "Gracz: " + nick.value + " | Wynik: " + punkty
 }
 
-addBtn.addEventListener("click", () => addPoints(1));
-subBtn.addEventListener("click", () => addPoints(-1));
+kup.onclick = function(){
+    if(punkty >= 20 && auto == false){
+        auto = true
+        punkty = punkty - 20
+        setInterval(function(){
+            punkty = punkty + 1
+            p.innerHTML = punkty
+            podglad.innerHTML = "Gracz: " + nick.value + " | Wynik: " + punkty
+        }, 1000)
+    }
+}
 
-shopBtn.addEventListener("click", () => {
-  if (points >= 20 && !autoMode) {
-    points -= 20;
-    autoMode = true;
-    refresh();
-    setInterval(() => {
-      points++;
-      refresh();
-    }, 1000);
-  }
-});
+let timer = setInterval(function(){
+    czas = czas - 1
+    c.innerHTML = czas
+    if(czas <= 0){
+        clearInterval(timer)
+        plus.disabled = true
+        minus.disabled = true
+        kup.disabled = true
+        zapisz.disabled = false
+    }
+}, 1000)
 
-timerId = setInterval(() => {
-  timeLeft--;
-  timeEl.textContent = "Pozostały czas: " + timeLeft;
-  if (timeLeft <= 0) {
-    clearInterval(timerId);
-    addBtn.disabled = true;
-    subBtn.disabled = true;
-    shopBtn.disabled = true;
-    infoEl.textContent = "Koniec gry! Twój wynik to: " + points;
-  }
-}, 1000);
+zapisz.onclick = function(){
+    let nowy = tabela.insertRow(-1)
+    let kol1 = nowy.insertCell(0)
+    let kol2 = nowy.insertCell(1)
+    kol1.innerHTML = nick.value
+    kol2.innerHTML = punkty
+}
