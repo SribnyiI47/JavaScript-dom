@@ -2,50 +2,42 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Klikacz 2.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Game Menu</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="game-container">
-    <header>
-      <h1>Klikacz 2.0 </h1>
-    </header>
 
-    <section class="status-panel">
-      <div class="status-box">
-        <span id="punkty">0</span>
-        <p>Punkty</p>
+  <h1>Basic Game Menu</h1>
+
+  <div class="container">
+    <div class="left">
+      <div class="menu">
+        <h2>Menu</h2>
+        <button class="btn blue">Start Game</button>
+        <button class="btn gray">Load Game</button>
+        <button class="btn green">Settings</button>
+        <button class="btn red">Exit</button>
       </div>
-      <div class="status-box">
-        <span id="czas">10</span>
-        <p>Czas</p>
+
+      <div class="create">
+        <h3>Create Character</h3>
+        <p>Wypełnij pola i kliknij Start</p>
+
+        <label>Imię:</label>
+        <input type="text">
+        <label>Level:</label>
+        <input type="number">
+        <label>Res:</label>
+        <input type="text">
+        <button class="btn cyan">Submit</button>
       </div>
-    </section>
+    </div>
 
-    <section class="controls">
-      <button id="plus">Dodaj punkt</button>
-      <button id="minus">Odejmij punkt</button>
-      <button id="kup">Auto-kliker (20 pkt)</button>
-    </section>
-
-    <section class="nick-area">
-      <h2>Twój nick</h2>
-      <input type="text" id="nick" placeholder="np. PlayerOne">
-      <div id="podglad"></div>
-      <button id="zapisz"> Zapisz wynik</button>
-    </section>
-
-    <section class="ranking">
-      <h2>Ranking graczy</h2>
-      <table id="tabela">
-        <tr>
-          <th>Nick</th>
-          <th>Wynik</th>
-        </tr>
-      </table>
-    </section>
+    <div class="right">
+      <img src="IMG_4620.WEBP" alt="Evernight">
+    </div>
   </div>
 
-  <script src="script.js"></script>
 </body>
 </html>
